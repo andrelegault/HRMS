@@ -17,4 +17,4 @@ How to install Dev environment:
 9. Click Next
 10. Double click HRMS project in the Available panel to move it to Configured panel
 11. Click Finish.
-12. To run application, right click Tomcat v9.0 Server at localhost and click start. Open any browser and visit localhost:8080/root/index.html to test if server works
+12. To run application, right click Tomcat v9.0 Server at localhost and click Debug. Open any browser and visit localhost:8080/root/ to test if server works.
