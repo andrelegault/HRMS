@@ -15,11 +15,12 @@ public class DAO {
 	
 	public List<User> getAllUsersFromDB(){
 		
-		List<User> results = entitymanager.createQuery("SELECT u FROM hrms.user u").getResultList();
+		List<User> results = entitymanager.createQuery("SELECT u FROM user").getResultList();
 		for(int i = 0; i < results.size(); i++)
 		{
 			System.out.println(results.get(i).getId());
 		}
+		
 		return results;
 		
 	}
