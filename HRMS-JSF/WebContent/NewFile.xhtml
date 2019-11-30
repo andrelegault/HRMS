@@ -1,0 +1,11 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"  xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<ui:repeat value="#{indexCtrl.userList}" var="value">
+			<h:outputText value="#{value}"></h:outputText>
+	</ui:repeat>
+</body>
+</html>
