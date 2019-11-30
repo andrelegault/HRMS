@@ -13,25 +13,7 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
 </head>
 <body>
-  <div data-collapse="small" data-animation="default" data-duration="400" class="navigation w-nav">
-    <div class="navigation-wrap">
-	    <a href="/root/index.html" class="logo-link w-nav-brand w--current">
-	    	<img src="/root/assets/business-logo.png" width="108" alt="" class="logo-image">
-	    </a>
-      <div class="menu">
-        <nav role="navigation" class="navigation-items w-nav-menu">
-        	<a href="/root/add-employee.html" class="navigation-item w-nav-link">ADD EMPLOYEE</a>
-        	<a href="/root/timesheets.html" class="navigation-item w-nav-link">SEE TIMESHEETS</a>
-        </nav>
-        <div class="menu-button w-nav-button">
-        	<img src="images/menu-icon_1menu-icon.png" width="22" alt="" class="menu-icon">
-        </div>
-      </div>
-      <a href="#" class="button cc-contact-us w-inline-block">
-        <div>LOGIN / LOGOUT</div>
-      </a>
-    </div>
-  </div>
+  <%@include file="header.jsp" %>
   <div class="section">
     <div class="container">
       <div class="blog-heading">
