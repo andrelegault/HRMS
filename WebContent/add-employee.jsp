@@ -13,65 +13,26 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
 </head>
 <body>
-  <div data-collapse="small" data-animation="default" data-duration="400" class="navigation w-nav">
-    <div class="navigation-wrap">
-	    <a href="/root/index.html" class="logo-link w-nav-brand w--current">
-	    	<img src="/root/assets/business-logo.png" width="108" alt="" class="logo-image">
-	    </a>
-      <div class="menu">
-        <nav role="navigation" class="navigation-items w-nav-menu">
-        	<a href="/root/add-employee.html" class="navigation-item w-nav-link">ADD EMPLOYEE</a>
-        	<a href="/root/timesheets.html" class="navigation-item w-nav-link">SEE TIMESHEETS</a>
-        </nav>
-      </div>
-      <a href="#" class="button cc-contact-us w-inline-block">
-        <div>LOGIN / LOGOUT</div>
-      </a>
-    </div>
-  </div>
+  <%@include file="header.jsp" %>
   <div class="section">
   <div class="blog-heading">
-    <h2 class="work-heading">Employee information</h2>
-  </div>
-  	<table class="hrms-table">
-	  <tr>
-	    <th>First name</th>
-	    <th>Last name</th>
-	    <th>SSN</th>
-	  </tr>
-	  <tr>
-	    <td>Jill</td>
-	    <td>Smith</td>
-	    <td>508298</td>
-	  </tr>
-	  <tr>
-	    <td>Eve</td>
-	    <td>Jackson</td>
-	    <td>941902</td>
-	  </tr>
-	</table>   
-  </div>
-    <div class="section">
-  <div class="blog-heading">
-    <h2 class="work-heading">Employee timesheet</h2>
-  </div>
-  	<table class="hrms-table">
-	  <tr>
-	    <th>Employee ID</th>
-	    <th>Clock in</th>
-	    <th>Clock out</th>
-	  </tr>
-	  <tr>
-	    <td>123</td>
-	    <td>01/01/20 10:45</td>
-	    <td>01/01/20 20:30</td>
-	  </tr>
-	  <tr>
-	    <td>456</td>
-	    <td>01/01/20 7:45</td>
-	    <td>01/01/20 17:30</td>
-	  </tr>
-	</table>   
+        <h2 class="work-heading">Add employee</h2>
+      </div>
+      <div class="collection-list-wrapper w-dyn-list">
+        <div class="collection-wrap w-dyn-items">
+          <div class="blog-preview-wrap w-dyn-item">
+            <form>
+            	<label>First Name :</label>
+    			<input type="text" placeholder="john" class="hrms-input" />
+    			<label>Last Name :</label>
+    			<input type="text" placeholder="doe" class="hrms-input" />
+    			<label>SSN :</label>
+    			<input type="number" placeholder="XXXXXX" class="hrms-input" />
+    			<input type="submit" class="button cc-contact-us hrms-submit-btn"/>
+   			</form>
+          </div>
+        </div>
+      </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="/root/js/general.js" type="text/javascript"></script>
