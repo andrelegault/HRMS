@@ -16,18 +16,15 @@ import java.sql.ResultSet;
 public class EmployeeServlet extends HttpServlet {
 	
 	/*
-	 * TODO: fix the bug saying the connector isn't found.
-	 * To make the driver findable
-	 * 1. add the jar file to your tomcat's /lib folder
-	 * 2. right click the project -> Build Path -> Configure Build Path -> Add external JARs -> Add the jar from step 1
+	 * check https://stackoverflow.com/a/53722642 for classnotfound error.
 	 */
 	protected static Connection connect() throws ClassNotFoundException, SQLException {
-		String dbDriver = "com.mysql.jdbc.driver";
+		String dbDriver = "com.mysql.jdbc.Driver";
 		String dbUrl = "jdbc:mysql://localhost:3306/";
 		
 		String dbName = "hrms";
 		String dbUser = "root";
-		String dbPass = "root";
+		String dbPass = "";
 		
 		Class.forName(dbDriver);
 		Connection con = DriverManager.getConnection(dbUrl + dbName, dbUser, dbPass);
