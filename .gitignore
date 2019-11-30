@@ -1,3 +1,6 @@
+.classpath
+.settings/*
+
 # Compiled class file
 *.class
 
