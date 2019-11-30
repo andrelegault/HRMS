@@ -1,0 +1,9 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"  xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<head>
+	</head>
+	<body>
+		<ui:repeat value="#{indexCtrl.getUserList}" var="value">
+			<h:outputText value="#{value}"></h:outputText>
+		</ui:repeat>
+	</body>
+</html>
