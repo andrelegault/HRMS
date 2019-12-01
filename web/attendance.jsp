@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,16 +38,30 @@
 	  </tr>
 	</table>   
   </div>
-    <div class="section">
-  <div class="blog-heading">
-    <h2 class="work-heading">Employee Attendance</h2>
-  </div>
+  <div class="section">
+    <div class="blog-heading">
+	  <h2 class="work-heading">Employee Attendance</h2>
+	</div>
+	
   	<table class="hrms-table">
 	  <tr>
-	    <th>Employee ID</th>
+	    <th>First Name</th>
+	    <th>Last Name</th>
 	    <th>Clock in</th>
 	    <th>Clock out</th>
+	    <th>Weekday</th>
 	  </tr>
+	  <%
+        ArrayList<ArrayList<String>> container = (ArrayList<ArrayList<String>>)request.getAttribute("container");
+	  
+	    for (ArrayList<String> row : container) { // every employee in db
+	    	out.println("<tr>");
+			for (String elem : row) { // every shift of that employee
+		    	out.println("<td>" + elem + "</td>");
+			}
+			out.println("</tr>");
+	    }
+	  %>
 	  <tr>
 	    <td>123</td>
 	    <td>01/01/20 10:45</td>
