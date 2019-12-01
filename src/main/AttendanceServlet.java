@@ -42,66 +42,57 @@ public class AttendanceServlet extends HttpServlet {
 	public AttendanceServlet() {
 		super();
 	}
-
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			Connection con = AttendanceServlet.connect();
-			
-			String first = request.getParameter("name");
-			String last = request.getParameter("last");
-			String role = request.getParameter("role");
-			
-			if (first != null && last != null && role != null) { // add an employee
-				Employee e = new Employee(first, last, role);
-				
-				PreparedStatement ps = con.prepareStatement("INSERT INTO employees VALUES(?, ?, ?)");
-				
-				ps.setString(1, request.getParameter("first"));
-				ps.setString(2, request.getParameter("last"));
-				ps.setString(3, request.getParameter("role"));
-				
-				ps.executeUpdate();
-				
-				ps.close();
-				con.close();
-			} else { // something wrong
-				
-			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Connection con = AttendanceServlet.connect();
 			
-			Statement st = con.createStatement();
-			st.execute("SELECT employee.first, employee.last, schedule.start, schedule.end, schedule.day FROM employee, schedule WHERE employee.id = schedule.employee_id");
-			ResultSet rs = st.getResultSet();
-			ArrayList<ArrayList<String>> container = new ArrayList<ArrayList<String>>();
+			Statement stmt1 = con.createStatement();
+			stmt1.execute("SELECT * FROM employee");
+			ResultSet rs1 = stmt1.getResultSet();
 			
-			while (rs.next()) {
+			Statement stmt2 = con.createStatement();
+			stmt2.execute("SELECT attendance.employee_id, employee.first, employee.last, attendance.start, attendance.end, attendance.day FROM employee, attendance WHERE employee.id = attendance.employee_id");
+			ResultSet rs2 = stmt2.getResultSet();
+			
+			ArrayList<ArrayList<String>> container1 = new ArrayList<ArrayList<String>>();
+			while (rs1.next()) {
 				ArrayList<String> row = new ArrayList<String>();
-				row.add(rs.getString(1));
-				row.add(rs.getString(2));
-				row.add(rs.getString(3));
-				row.add(rs.getString(4));
-				row.add(rs.getString(5));
-
-				container.add(row);
+				row.add(rs1.getString(1));
+				row.add(rs1.getString(2));
+				row.add(rs1.getString(3));
+				row.add(rs1.getString(4));
+				row.add(rs1.getString(5));
+				row.add(rs1.getString(6));
+				row.add(rs1.getString(7));
+				row.add(rs1.getString(8));
+				row.add(rs1.getString(9));
+				row.add(rs1.getString(10));
+				row.add(rs1.getString(11));
+				row.add(rs1.getString(12));
+				container1.add(row);
 			}
-			request.setAttribute("container", container);
+			
+			ArrayList<ArrayList<String>> container2 = new ArrayList<ArrayList<String>>();
+			while (rs2.next()) {
+				ArrayList<String> row = new ArrayList<String>();
+				row.add(rs2.getString(1));
+				row.add(rs2.getString(2));
+				row.add(rs2.getString(3));
+				row.add(rs2.getString(4));
+				row.add(rs2.getString(5));
+				row.add(rs2.getString(6));
+				container2.add(row);
+			}
+			
+			request.setAttribute("employees", container1);
+			request.setAttribute("attendances", container2);
 			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/attendance.jsp");
 		    dispatcher.forward(request, response);
 			
-			st.close();
+		    stmt1.close();
+		    stmt2.close();
 			con.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
