@@ -1,21 +1,24 @@
 package main;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 
-@WebServlet(name="EmployeeServlet", urlPatterns="/employeeServlet")
-public class EmployeeServlet extends HttpServlet {
-	
+@WebServlet(name="EmployeeServlet", urlPatterns="/attendance")
+public class AttendanceServlet extends HttpServlet {
 	/*
 	 * TODO: fix the bug saying the connector isn't found.
 	 * To make the driver findable
@@ -35,11 +38,15 @@ public class EmployeeServlet extends HttpServlet {
 		
 		return con;
 	}
-	
+
+	public AttendanceServlet() {
+		super();
+	}
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			Connection con = EmployeeServlet.connect();
+			Connection con = AttendanceServlet.connect();
 			
 			String first = request.getParameter("name");
 			String last = request.getParameter("last");
@@ -71,23 +78,28 @@ public class EmployeeServlet extends HttpServlet {
 	}
 	
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Connection con = EmployeeServlet.connect();
+			Connection con = AttendanceServlet.connect();
 			
 			Statement st = con.createStatement();
 			st.execute("SELECT employee.first, employee.last, schedule.start, schedule.end, schedule.day FROM employee, schedule WHERE employee.id = schedule.employee_id");
 			ResultSet rs = st.getResultSet();
-			ArrayList<String> arrayList = new ArrayList<String>();
+			ArrayList<ArrayList<String>> container = new ArrayList<ArrayList<String>>();
 			
 			while (rs.next()) {
-				System.out.println(rs.getString(1));
-				System.out.println(rs.getString(2));
-				System.out.println(rs.getString(3));
-				System.out.println(rs.getString(4));
-				System.out.println(rs.getString(5));
+				ArrayList<String> row = new ArrayList<String>();
+				row.add(rs.getString(1));
+				row.add(rs.getString(2));
+				row.add(rs.getString(3));
+				row.add(rs.getString(4));
+				row.add(rs.getString(5));
+
+				container.add(row);
 			}
-			//TODO: do something with the results
+			request.setAttribute("container", container);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/attendance.jsp");
+		    dispatcher.forward(request, response);
 			
 			st.close();
 			con.close();
