@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <div data-collapse="small" data-animation="default" data-duration="400" class="navigation w-nav">
     <div class="navigation-wrap">
-		<a href="/root/index.html" class="logo-link w-nav-brand w--current">
+		<a href="/root/" class="logo-link w-nav-brand w--current">
 			<img src="/root/assets/business-logo.png" width="108" alt="" class="logo-image">
 		</a>
 		<div class="menu">
