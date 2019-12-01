@@ -22,20 +22,30 @@
   </div>
   	<table class="hrms-table">
 	  <tr>
-	    <th>First name</th>
-	    <th>Last name</th>
-	    <th>SSN</th>
+	    <th>ID</th>
+	    <th>First Name</th>
+	    <th>Last Name</th>
+	    <th>DOB</th>
+	    <th>Role</th>
+	    <th>Address</th>
+	    <th>Email</th>
+	    <th>Phone</th>
+	    <th>Created At</th>
+	    <th>Last Sign In</th>
+	    <th>Icon</th>
+	    <th>Details</th>
 	  </tr>
-	  <tr>
-	    <td>Jill</td>
-	    <td>Smith</td>
-	    <td>508298</td>
-	  </tr>
-	  <tr>
-	    <td>Eve</td>
-	    <td>Jackson</td>
-	    <td>941902</td>
-	  </tr>
+	  <%
+        ArrayList<ArrayList<String>> employees = (ArrayList<ArrayList<String>>)request.getAttribute("employees");
+	  
+	    for (ArrayList<String> row : employees) { // every employee in db
+	    	out.println("<tr>");
+			for (String elem : row) { // every property of that employee
+		    	out.println("<td>" + elem + "</td>");
+			}
+			out.println("</tr>");
+	    }
+	  %>
 	</table>   
   </div>
   <div class="section">
@@ -45,16 +55,17 @@
 	
   	<table class="hrms-table">
 	  <tr>
+	  	<th>ID</th>
 	    <th>First Name</th>
 	    <th>Last Name</th>
 	    <th>Clock in</th>
 	    <th>Clock out</th>
-	    <th>Weekday</th>
+	    <th>Date</th>
 	  </tr>
 	  <%
-        ArrayList<ArrayList<String>> container = (ArrayList<ArrayList<String>>)request.getAttribute("container");
+        ArrayList<ArrayList<String>> attendances = (ArrayList<ArrayList<String>>)request.getAttribute("attendances");
 	  
-	    for (ArrayList<String> row : container) { // every employee in db
+	    for (ArrayList<String> row : attendances) { // every employee in db
 	    	out.println("<tr>");
 			for (String elem : row) { // every shift of that employee
 		    	out.println("<td>" + elem + "</td>");
@@ -62,16 +73,6 @@
 			out.println("</tr>");
 	    }
 	  %>
-	  <tr>
-	    <td>123</td>
-	    <td>01/01/20 10:45</td>
-	    <td>01/01/20 20:30</td>
-	  </tr>
-	  <tr>
-	    <td>456</td>
-	    <td>01/01/20 7:45</td>
-	    <td>01/01/20 17:30</td>
-	  </tr>
 	</table>   
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
