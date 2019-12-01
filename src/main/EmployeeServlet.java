@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.sql.ResultSet;
 
 @WebServlet(name="EmployeeServlet", urlPatterns="/employeeServlet")
@@ -22,12 +23,12 @@ public class EmployeeServlet extends HttpServlet {
 	 * 2. right click the project -> Build Path -> Configure Build Path -> Add external JARs -> Add the jar from step 1
 	 */
 	protected static Connection connect() throws ClassNotFoundException, SQLException {
-		String dbDriver = "com.mysql.jdbc.driver";
+		String dbDriver = "com.mysql.jdbc.Driver";
 		String dbUrl = "jdbc:mysql://localhost:3306/";
 		
 		String dbName = "hrms";
 		String dbUser = "root";
-		String dbPass = "root";
+		String dbPass = "";
 		
 		Class.forName(dbDriver);
 		Connection con = DriverManager.getConnection(dbUrl + dbName, dbUser, dbPass);
@@ -75,9 +76,17 @@ public class EmployeeServlet extends HttpServlet {
 			Connection con = EmployeeServlet.connect();
 			
 			Statement st = con.createStatement();
-			st.execute("SELECT * FROM employees");
+			st.execute("SELECT employee.first, employee.last, schedule.start, schedule.end, schedule.day FROM employee, schedule WHERE employee.id = schedule.employee_id");
 			ResultSet rs = st.getResultSet();
+			ArrayList<String> arrayList = new ArrayList<String>();
 			
+			while (rs.next()) {
+				System.out.println(rs.getString(1));
+				System.out.println(rs.getString(2));
+				System.out.println(rs.getString(3));
+				System.out.println(rs.getString(4));
+				System.out.println(rs.getString(5));
+			}
 			//TODO: do something with the results
 			
 			st.close();
