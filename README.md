@@ -12,11 +12,10 @@ The features include:
 
 ## Usage ##
 To run the app you need:
-* A tomcat server
+* An Apache Tomcat 9.0 server
 
 ### Installation ###
-You can run the app with the provided in war file under *releases* by simply putting it in your a
-pache server's `webapps` directory.
+You can run the app with the provided in war file under *releases* by simply putting it in your apache tomcat server's `webapps` directory.
 ```bash
 cp hrms-1.0.war <apache-installation>/webapps/
 ```
