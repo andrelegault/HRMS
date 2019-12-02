@@ -1,20 +1,26 @@
 # HRMS
-Implementation for the HRMS for iterations 5 &amp; 6
+Human Resources Management System solution by Team Sumas
 
+## Introduction ##
+This project showcases the main features of the HRMS solution provided as part of iterations 5 and 6 for SOEN 343.
 
+The features include:
+* Viewing employee attendance/information
+* Clocking in/out
+* Adding employees
 
+## Usage ##
+To run the app you need:
+* A mysql server
+* A tomcat server
 
-How to install Dev environment:
-------------------------------------------------------------------------------------------------------------------------------------------
-1. Install Eclipse JEE https://www.eclipse.org/downloads/packages/release/2019-09/r/eclipse-ide-enterprise-java-developers
-2. Install Java JDK 8 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-3. Clone repo to computer (remember path)
-4. Open Eclipse for the first time, choose workspace folder as the same path you saved your repo in. HRMS project should appear in the  explorer. If it doesn't, use Eclipse File > Import... to import the project to your workspace.
-5. When finished, click Servers tab at the bottom. Click Add new server.
-6. In Apache folder, select "Tomcat V9.0 Server" from the list.
-7. Next to server runtime environment click "add..."
-8. For Tomcat installation directory, browse and select the "apache-tomcat-9.0.29" folder as the target. Use default workbench JRE (should be 1.8.X_XXX format).
-9. Click Next
-10. Double click HRMS project in the Available panel to move it to Configured panel
-11. Click Finish.
-12. To run application, go to servers tab, right click "Tomcat v9.0 Server at localhost" and click Debug. Open any browser and visit localhost:8080/root/ to test if server works.
+### Installation ###
+You can run the app with the provided .war file.
+
+### Build ###
+To build the app you need maven:
+```bash
+1. mvn install
+2. cp target/HRMS-JPA-JSF.war <apache-installation>/webapps/
+```
+Go to http://localhost:8080/HRMS-JPA-JSF/
