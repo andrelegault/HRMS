@@ -15,7 +15,7 @@ To run the app you need:
 * An Apache Tomcat 9.0 server
 
 ### Installation ###
-You can run the app with the provided in war file under *releases* by simply putting it in your apache tomcat server's `webapps` directory.
+You can run the app with the provided in war file under *releases* by simply putting it in your apache tomcat server's `webapps` directory and running the `startup.bat` script contained in the `bin` directory.
 ```bash
 cp hrms-1.0.war <apache-installation>/webapps/
 ```
