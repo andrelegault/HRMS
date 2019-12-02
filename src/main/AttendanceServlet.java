@@ -27,11 +27,12 @@ public class AttendanceServlet extends HttpServlet {
 	 */
 	protected static Connection connect() throws ClassNotFoundException, SQLException {
 		String dbDriver = "com.mysql.jdbc.Driver";
-		String dbUrl = "jdbc:mysql://localhost:3306/";
+		//String dbUrl = "jdbc:mysql://localhost:3306/";
+		String dbUrl = "jdbc:mysql://SG-hrms-1622-master.servers.mongodirector.com:3306/";
 		
 		String dbName = "hrms";
-		String dbUser = "root";
-		String dbPass = "";
+		String dbUser = "sgroot";
+		String dbPass = "oC_ZmVdxqQ6HJPzy";
 		
 		Class.forName(dbDriver);
 		Connection con = DriverManager.getConnection(dbUrl + dbName, dbUser, dbPass);
