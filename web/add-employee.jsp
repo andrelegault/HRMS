@@ -21,15 +21,38 @@
       <div class="collection-list-wrapper w-dyn-list">
         <div class="collection-wrap w-dyn-items">
           <div class="blog-preview-wrap w-dyn-item">
-            <form>
-            	<label>First Name :</label>
-    			<input type="text" placeholder="john" class="hrms-input" />
-    			<label>Last Name :</label>
-    			<input type="text" placeholder="doe" class="hrms-input" />
-    			<label>SSN :</label>
-    			<input type="number" placeholder="XXXXXX" class="hrms-input" />
-    			<input type="submit" class="button cc-contact-us hrms-submit-btn"/>
-   			</form>
+		<%
+			if (request.getAttribute("error") != null) {
+				out.println("<p style='color: red'>Error adding employee!</p>");
+			} else if (request.getAttribute("success") != null) {
+				out.println("<p style='color: green'>Employee added!</p>");
+			} else if (request.getAttribute("format") != null) {
+				out.println("<p style='color: red'>Invalid input format!</p>");
+			}
+		%>
+            <form action="add-employee" method="POST">
+		<label>ID :</label>
+		<input type="number" name="id" placeholder="1" class="hrms-input" required />
+		<label>First Name :</label>
+		<input type="text" name="first" placeholder="John" class="hrms-input" required />
+		<label>Last Name :</label>
+		<input type="text" name="last" placeholder="Doe" class="hrms-input" required />
+		<label>Date of birth :</label>
+		<input type="text" name="dob" placeholder="YYYY-MM-DD" class="hrms-input" required />
+		<label>Role :</label>
+		<input type="text" name="role" placeholder="Developer" class="hrms-input" required />
+		<label>Address :</label>
+		<input type="text" name="address" placeholder="1 King st." class="hrms-input" required />
+		<label>Email :</label>
+		<input type="email" name="email" placeholder="johndoe@does.com" class="hrms-input" required />
+		<label>Phone :</label>
+		<input type="tel" name="phone" placeholder="5141234567" class="hrms-input" required />
+		<label>Icon :</label>
+		<input type="text" name="icon" placeholder="icon url" class="hrms-input" />
+		<label>Details :</label>
+		<input type="text" name="details" placeholder="Extra details" class="hrms-input" />
+		<input type="submit" class="button cc-contact-us hrms-submit-btn"/>
+	    </form>
           </div>
         </div>
       </div>

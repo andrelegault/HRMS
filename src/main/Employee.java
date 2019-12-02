@@ -15,5 +15,4 @@ public class Employee extends User {
 	public String getRole() {
 		return this.role;
 	}
-
 }
