@@ -23,4 +23,10 @@ To build the app you need maven:
 1. mvn install
 2. cp target/HRMS-JPA-JSF.war <apache-installation>/webapps/
 ```
+
+To populate the database:
+```
+1. mysql -u<username> -p<password> < init.sql
+```
+
 Go to http://localhost:8080/HRMS-JPA-JSF/
